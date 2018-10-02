@@ -1,0 +1,17 @@
+** 2 Oct 2018
+
+[[file:figure-pepseq-example.R]] reads sample signal data, fits peak
+models, and plots them. 
+
+Several issues: 
+- "signal" data are non-negative real-valued so maybe should use
+  exponential loss? Or develop a new model for all three
+  signal/background tracks? Right now using Poisson loss which is
+  undesirable because we need to round the data to integers.
+- Right now we are selecting the most complex model that is feasible
+  for the up-down constraints, which looks like it results in several
+  errors (false positives where a single peak is split in two, false
+  negatives where no peak is detected). Would be better to learn a
+  penalty function based on labeled true positives (regions with
+  peaks) and true negatives (regions with no peaks).
+
