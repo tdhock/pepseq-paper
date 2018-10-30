@@ -55,4 +55,4 @@ works_with_R(
   "3.5.1",
   ggplot2="3.0.0",
   PeakSegOptimal="2018.5.25",
-  data.table="1.11.4")
+  data.table="1.11.8")

@@ -1,3 +1,8 @@
+** 30 Oct 2018
+
+[[file:counts_annotated.R]] converts data from John to format for upload
+to SegAnnDB.
+
 ** 2 Oct 2018
 
 [[file:figure-pepseq-example.R]] reads sample signal data, fits peak

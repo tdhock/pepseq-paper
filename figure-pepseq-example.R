@@ -54,7 +54,7 @@ gg <- ggplot()+
     xintercept=position, linetype=constraint),
     color="green",
     data=show.changes)
-pdf("figure-pepseq-example-mean.pdf", 12, 8)
+png("figure-pepseq-example-mean.png", 12, 8, res=100, units="in")
 print(gg)
 dev.off()
 
@@ -81,7 +81,7 @@ gg <- ggplot()+
     color="deepskyblue",
     shape=1,
     data=show.segments[status=="peak"])
-pdf("figure-pepseq-example-peaks.pdf", 12, 8)
+png("figure-pepseq-example-peaks.png", 12, 8, res=100, units="in")
 print(gg)
 dev.off()
 
@@ -111,7 +111,7 @@ gg <- some.gg+
     shape=1,
     data=max.peaks)
 
-pdf("figure-pepseq-example.pdf", 12, 8)
+png("figure-pepseq-example.png", 12, 8, res=100, units="in")
 print(gg)
 dev.off()
  
