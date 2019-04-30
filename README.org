@@ -1,3 +1,7 @@
+** 30 Apr 2019
+Pepseq9 labels data set with 64 positive labels (peak in cleaved but
+not in paired uncleaved) and 199 negative/noPeak labels (no peak in
+neither cleaved nor uncleaved). [[file:pepseq9.labels.R]] makes [[file:pepseq9.labels.csv]]
 ** 30 Oct 2018
 
 [[file:counts_annotated.R]] converts data from John to format for upload

@@ -46,6 +46,12 @@ for(col.i in count.i.vec){
   close(con)
 }
 
+molt <- melt(not.na, measure.vars=3:41)
+molt[, list(
+  max.count=max(value, na.rm=TRUE)
+), by=list(variable)][order(max.count)]
+
+
 molt <- melt(not.na, measure.vars=3:11)
 library(ggplot2)
 molt[, acc := sub("_", "\n", `Accession (UniProt)`)]
