@@ -71,7 +71,7 @@ fwrite(over.dt, "pepseq9.labels.tall.csv")
   label <- if(cleaved_annotation=="1breakpoint"){
     c("peakStart", "peakEnd")
   }else{
-    "noPeak"
+    "noPeaks"
   }
   data.table(
     label,

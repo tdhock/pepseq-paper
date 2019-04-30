@@ -1,0 +1,70 @@
+---
+title: "Pepseq9 labels"
+output:
+  html_document:
+    self_contained: false
+---
+
+```{r figures, fig.height=10, fig.width=20, fig.path="figures/"}
+setwd("..")
+source("packages.R")
+pepseq9.labels <- fread("pepseq9.labels.csv")
+for(uname in unique(pepseq9.labels$uncleaved.name)){
+  sample.labels <- pepseq9.labels[uname, on=list(uncleaved.name)]
+  sample.labels[, uncleaved_ann := "noPeaks"]
+  col.name.list <- list(
+    cleaved=c("labelStart", "labelEnd", "label"),
+    not=c("uncleaved_min", "uncleaved_max", "uncleaved_ann"))
+  cov.dt.list <- list()
+  show.labels.list <- list()
+  for(sample.type in names(col.name.list)){
+    f <- paste0(
+      "bedGraph/", uname,
+      ifelse(sample.type=="cleaved", "_cleaved", ""),
+      ".bedGraph.gz")
+    suffix.cov <- fread(
+      cmd=paste("zcat", f), header=FALSE,
+      drop=3,
+      col.names=c("protein", "position", "coverage"))
+    cov.dt.list[[sample.type]] <- data.table(sample.type, suffix.cov)
+    col.name.vec <- c("protein", col.name.list[[sample.type]])
+    ldt <- unique(sample.labels[, col.name.vec, with=FALSE])
+    setnames(ldt, c("protein", col.name.list$cleaved))
+    show.labels.list[[sample.type]] <- data.table(
+      sample.type, ldt)
+  }
+  show.labels <- do.call(rbind, show.labels.list)
+  cov.dt <- do.call(rbind, cov.dt.list)
+
+  max.dt <- cov.dt[, list(
+    max.pos=max(position)
+  ), by=list(protein)][order(max.pos)]
+  cov.dt[, Protein := factor(protein, max.dt$protein)]
+  show.labels[, Protein := factor(protein, max.dt$protein)]
+  ann.colors <- c(
+    noPeaks="#f6f4bf",
+    peakStart="#ffafaf",
+    peakEnd="#ff4c4c",
+    peaks="#a445ee")
+  gg <- ggplot()+
+    coord_cartesian(xlim=range(cov.dt$position), expand=FALSE)+
+    theme_bw()+
+    suppressWarnings(theme(panel.margin=grid::unit(0, "lines")))+
+    facet_grid(Protein + sample.type ~ ., scales="free")+
+    scale_fill_manual(
+      values=ann.colors, breaks=names(ann.colors))+
+    penaltyLearning::geom_tallrect(aes(
+      xmin=labelStart, xmax=labelEnd, fill=label),
+      alpha=0.5,
+      size=0.5,
+      color="grey",
+      data=show.labels)+
+    geom_point(aes(
+      position, coverage),
+      shape=1,
+      data=cov.dt) 
+  cat(uname)
+  print(gg)
+  
+}
+```
