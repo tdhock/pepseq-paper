@@ -5,18 +5,17 @@
 Web page with one plot per sample:
 https://rcdata.nau.edu/genomic-ml/figure-pepseq-labels/
 
-Plot of positive labels, showing overlapping peaks across samples for
-some proteins.
+Plot of positive labels, showing overlapping peaks across samples for some proteins.
 
 [[https://rcdata.nau.edu/genomic-ml/figure-pepseq-labels/figure-positive-labels.png]]
 
-matrix of data with labels, log(y) space free axes:
 
-[[https://rcdata.nau.edu/genomic-ml/figure-pepseq-labels/figure-all-free.png]]
 
-matrix of data with labels, linear space fixed y axes:
+[[https://rcdata.nau.edu/genomic-ml/figure-pepseq-labels/figure-all-free.png][matrix of data with labels, log(y) space free axes:]]
 
-[[https://rcdata.nau.edu/genomic-ml/figure-pepseq-labels/figure-all-free-x.png]]
+
+
+[[https://rcdata.nau.edu/genomic-ml/figure-pepseq-labels/figure-all-free-x.png][matrix of data with labels, linear space fixed y axes:]]
 
 ** 30 Apr 2019
 Pepseq9 labels data set with 78 positive labels (peak in cleaved but
