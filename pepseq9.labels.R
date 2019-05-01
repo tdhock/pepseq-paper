@@ -62,8 +62,12 @@ over.dt[uncleaved_annotation=="1breakpoint"]
   labels=.N
 ), by=list(
   uncleaved.name, protein, uncleaved_min, uncleaved_max, cleaved_annotation)])
-count.dt[, table(labels, cleaved_annotation)]
-count.dt[labels==1 & cleaved_annotation=="1breakpoint"]
+print(count.dt[, table(labels, cleaved_annotation)])
+bad <- count.dt[labels==1 & cleaved_annotation=="1breakpoint"]
+if(nrow(bad)){
+  print(bad)
+  stop("only one 1breakpoint label on cleaved")
+}
 
 fwrite(over.dt, "pepseq9.labels.tall.csv")
 
