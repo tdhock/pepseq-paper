@@ -2,16 +2,27 @@
 
 [[file:figure-pepseq-labels/index.Rmd]] makes
 
-[[file:figure-pepseq-labels/figure-positive-labels.png]]
+Web page with one plot per sample:
+https://rcdata.nau.edu/genomic-ml/figure-pepseq-labels/
 
-[[file:figure-pepseq-labels/figure-all-free.png]]
+Plot of positive labels, showing overlapping peaks across samples for
+some proteins.
 
-[[file:figure-pepseq-labels/figure-all-free-x.png]]
+[[https://rcdata.nau.edu/genomic-ml/figure-pepseq-labels/figure-positive-labels.png]]
+
+matrix of data with labels, log(y) space free axes:
+
+[[https://rcdata.nau.edu/genomic-ml/figure-pepseq-labels/figure-all-free.png]]
+
+matrix of data with labels, linear space fixed y axes:
+
+[[https://rcdata.nau.edu/genomic-ml/figure-pepseq-labels/figure-all-free-x.png]]
 
 ** 30 Apr 2019
-Pepseq9 labels data set with 64 positive labels (peak in cleaved but
-not in paired uncleaved) and 199 negative/noPeak labels (no peak in
-neither cleaved nor uncleaved). [[file:pepseq9.labels.R]] makes [[file:pepseq9.labels.csv]]
+Pepseq9 labels data set with 78 positive labels (peak in cleaved but
+not in paired uncleaved) and 241 negative/noPeak labels (no peak in
+neither cleaved nor uncleaved). [[file:pepseq9.labels.R]] makes
+[[file:pepseq9.labels.csv]]
 ** 30 Oct 2018
 
 [[file:counts_annotated.R]] converts data from John to format for upload
