@@ -52,7 +52,9 @@ works_with_R <- function(Rvers,...){
 options(datatable.fread.input.cmd.message=FALSE)
 options(repos="http://cloud.r-project.org")
 works_with_R(
-  "3.5.1",
-  ggplot2="3.0.0",
+  "3.6.0",
+  ggplot2="3.2.0",
   PeakSegOptimal="2018.5.25",
-  data.table="1.11.8")
+  PeakSegJoint="2018.10.3",
+  "tdhock/namedCapture@c760fdf903948f567d9e4a11416422128f8ba729",
+  data.table="1.12.2")
