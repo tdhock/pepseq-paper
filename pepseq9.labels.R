@@ -8,7 +8,10 @@ download.fread <- function(u, f){
   }
   fread(f)
 }
-profiles <- download.fread(paste0(server, "csv_profiles/"), "pepseq9/profiles.csv")
+dest.dir <- "pepseq9.labels"
+profiles <- download.fread(
+  paste0(server, "csv_profiles/"),
+  "pepseq9.profile.list.csv")
 
 match.dt <- namedCapture::df_match_variable(
   profiles, description=list(
@@ -37,7 +40,7 @@ for(pair.i in 1:nrow(uncleaved.dt)){
     sample.name <- name.list[[sample.type]]
     dt <- download.fread(
       paste0(server, "export/None/", sample.name, "/regions/csv/"),
-      paste0("pepseq9/", sample.name, ".csv"))
+      file.path(dest.dir, paste0(sample.name, ".csv")))
     new.list <- list(protein=dt$chromosome)
     for(col.name in c("min", "max", "annotation")){
       new.list[[paste0(sample.type, "_", col.name)]] <- dt[[col.name]]
